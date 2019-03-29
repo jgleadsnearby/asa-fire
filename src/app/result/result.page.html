@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar class="title-background">
+    <ion-buttons slot="start">
+      <ion-back-button class="bck-icon" defaultHref='tabs'></ion-back-button>
+    </ion-buttons>
+    <ion-title class="bck-title">Result</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h3>Your Scan Result</h3>
+  <div *ngIf="scannedData">
+    <p>{{resultUrl}}</p>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-icon name="logo-chrome"></ion-icon> <ion-label (click)="openInApp()">Web Search</ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-icon name="copy"></ion-icon> <ion-label (click)="copyText()">Copy</ion-label>
+    </ion-row>
+    <ion-row>
+      <ion-icon name="ios-share"></ion-icon> <ion-label (click)="shareMail()">Share</ion-label>
+    </ion-row>
+  </ion-grid>
+</ion-content>

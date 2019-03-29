@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar class="title-background">
+    <ion-title>
+      Generator
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item class="txt">
+    <ion-input type="text" placeholder="Enter code here" [(ngModel)]="code"></ion-input>
+    <ion-icon item-end name="barcode" (click)="presentAlertPrompt();"></ion-icon>
+  </ion-item>
+
+  <div class="wrap">
+    <ion-qrcode *ngIf="isCreate" (qrCanvas)="setQrCanvas($event)" [data]="code" [size]="250" [level]="'H'" [logo]="'assets/imgs/ASA_logo_512_v1.jpg'" [foreground]="'black'"></ion-qrcode>
+  </div>
+
+  <!--<ion-fab horizontal="end" slot="fixed">-->
+    <!--<ion-fab-button (click)="shareMail()">-->
+      <!--<ion-icon name="share"></ion-icon>-->
+    <!--</ion-fab-button>-->
+  <!--</ion-fab>-->
+
+  <!--<img style="width: 100%;" *ngIf="displayQrCode()" [src]="generated" />-->
+
+  <ion-fab *ngIf="displayQrCode()" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="shareMail()">
+      <ion-icon name="share"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <div *ngIf="displayQrCode()">
+    <ion-button class="btn" expand="block" color="primary" (click)="createPdf()">Create PDF</ion-button>
+  </div>
+
+  <!--<div *ngIf="displayQrCode()">
+    <ion-button class="btn" expand="block" color="primary" (click)="downloadPdf()" [disabled]="!pdfObj">Download PDF</ion-button>
+  </div>-->
+
+</ion-content>

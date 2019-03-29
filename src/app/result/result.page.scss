@@ -1,0 +1,45 @@
+h3 {
+  text-align: -webkit-center;
+  font-size: large;
+  font-weight: 600;
+}
+
+p {
+  text-align: -webkit-center;
+  margin-top: 20%;
+}
+
+ion-row {
+  font-size: x-large;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5%;
+  padding-top: 5%;
+}
+
+ion-label.sc-ion-label-md-h.sc-ion-label-md-s.hydrated {
+  padding-left: 5%;
+}
+ion-label.sc-ion-label-ios-h.sc-ion-label-ios-s.hydrated {
+  padding-left: 5%;
+}
+
+.bck-icon {
+  --margin-end: 0px;
+  --padding-end: 0px;
+  --padding-start: 0px;
+  --icon-padding-start: .0em;
+  --icon-margin-end: 0px;
+  --icon-margin-start: 0px;
+}
+.bck-title {
+  -webkit-padding-start: 0px;
+  padding-inline-start: 0px;
+  -webkit-padding-end: 0px;
+  padding-inline-end: 0px;
+  padding-top: 1%;
+  text-align: -webkit-center;
+}
+
+.sc-ion-back-button-ios-h{
+  --color: #ffffff;
+}
