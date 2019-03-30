@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import {ToastController} from '@ionic/angular';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-tab3',
@@ -12,10 +13,11 @@ export class Tab3Page {
   userName: any;
   userPass: any;
   phone: any;
+  acctNumber: any;
     passwordType = 'password';
     passwordIcon = 'eye-off';
 
-    constructor(private storage: Storage, public toastCtrl: ToastController) {
+    constructor(private callNumber: CallNumber, private storage: Storage, public toastCtrl: ToastController) {
         this.getData('userInfo');
     }
 
@@ -25,22 +27,26 @@ export class Tab3Page {
     }
 
     submit() {
-      if (this.userName === null || this.userName === undefined || this.userName === '') {
-        this.presentToast('Please enter username');
-          // console.log('userName error = ', this.userName);
-      } else if (this.userPass === null || this.userPass === undefined || this.userPass === '') {
-          this.presentToast('Please enter password');
-          // console.log('userPass error= ', this.userPass);
-      } else if (this.phone === null || this.phone === undefined || this.phone === '') {
-          this.presentToast('Please enter phone number');
-          // console.log('userPass error= ', this.userPass);
-      } else {
+        if (this.userName === null || this.userName === undefined || this.userName === '') {
+            this.presentToast('Please enter a Username');
+            // console.log('userName error = ', this.userName);
+        } else if (this.userPass === null || this.userPass === undefined || this.userPass === '') {
+            this.presentToast('Please enter a Password');
+            // console.log('userPass error= ', this.userPass);
+        } else if (this.phone === null || this.phone === undefined || this.phone === '') {
+            this.presentToast('Please enter a Phone Number');
+            // console.log('userPass error= ', this.userPass);
+        } else if (this.acctNumber === null || this.acctNumber === undefined || this.acctNumber === '') {
+            this.presentToast('Please enter an Account Number');
+            // console.log('userPass error= ', this.userPass);
+    } else {
         // console.log('userName = ', this.userName);
         // console.log('userPass = ', this.userPass);
         const param = {
             userName: this.userName,
             userPass: this.userPass,
-            phone: this.phone
+            phone: this.phone,
+            acctNumber: this.acctNumber
         };
         this.setData('userInfo', param);
       }
@@ -60,10 +66,12 @@ export class Tab3Page {
             this.userName = keyVal.userName;
             this.userPass = keyVal.userPass;
             this.phone = keyVal.phone;
+            this.acctNumber = keyVal.acctNumber;
         } else {
             this.userName = '';
             this.userPass = '';
             this.phone = '';
+            this.acctNumber = '';
         }
     }
 
@@ -74,5 +82,9 @@ export class Tab3Page {
             position: 'bottom'
         });
         toast.present().then(res => res);
+    }
+
+    callSupport(): void {
+        this.callNumber.callNumber('18009323822', true);
     }
 }

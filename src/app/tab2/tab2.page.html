@@ -6,8 +6,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <div class="logo">
+    <img alt="logo" width="350" src="assets/imgs/logo.png" /> 
+  </div>
   <ion-item class="txt">
     <ion-input type="text" placeholder="Enter code here" [(ngModel)]="code"></ion-input>
     <ion-icon item-end name="barcode" (click)="presentAlertPrompt();"></ion-icon>

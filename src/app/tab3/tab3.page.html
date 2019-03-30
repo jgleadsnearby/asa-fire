@@ -7,6 +7,23 @@
 </ion-header>
 
 <ion-content padding>
+  <div class="logo">
+    <img alt="logo" width="350" src="assets/imgs/logo.png" /> 
+  </div>
+  <p><strong>To call and put the system on Test:</strong></p> 
+
+  <ion-button color="primary" (click)="callSupport()"><ion-icon name="call"></ion-icon>&nbsp;1-800-932-3822 </ion-button>
+
+  <ion-item class="acct_txt">
+    <ion-label position="floating">Account Number</ion-label>
+    <ion-input type="text" [(ngModel)]="acctNumber"></ion-input>
+  </ion-item>  
+
+  <ion-item class="phone_txt">
+    <ion-label position="floating">Phone Number</ion-label>
+    <ion-input type="number" [(ngModel)]="phone"></ion-input>
+  </ion-item>  
+  
   <ion-item class="username_txt">
     <ion-label position="floating">Username</ion-label>
     <ion-input type="text" [(ngModel)]="userName"></ion-input>
@@ -17,11 +34,6 @@
     <ion-input [type]="passwordType" [(ngModel)]="userPass"></ion-input>
     <ion-icon [name]="passwordIcon" class="passwordIcon"
               (click)="hideShowPassword()" slot="end" tappable></ion-icon>
-  </ion-item>
-
-  <ion-item class="username_txt">
-    <ion-label position="floating">Phone</ion-label>
-    <ion-input type="number" [(ngModel)]="phone"></ion-input>
   </ion-item>
 
   <div>

@@ -1,22 +1,18 @@
+.acct_txt{
+  --padding-start: 0  !important;
+}
 .username_txt{
   --padding-start: 0  !important;
 }
 .password_txt{
   --padding-start: 0  !important;
 }
+.phone_txt{
+  --padding-start: 0  !important;
+} 
 .btn{
-  margin-top: 6%;
+  margin-top: 8%;
 }
-
 .passwordIcon{
   font-size: 2rem !important;
-  //position: absolute !important;
-  //top: 15px !important;
-  /*font-size: 2rem !important;
-  position: relative !important;
-  top: 4px !important;
-  !* right: -4%; *!
-  margin: 0 auto !important;
-  width: 22%;
-  margin-right: -8% !important*/
 }

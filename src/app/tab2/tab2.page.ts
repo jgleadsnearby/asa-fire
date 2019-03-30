@@ -22,7 +22,7 @@ export class Tab2Page {
     barcodeScannerOptions: BarcodeScannerOptions;
     pdfObj = null;
     docDefinition: any;
-    code = 'https://www.google.com';
+    code = 'https://app.servicetrade.com/customer/';
     generated = '';
     isCreate = false;
 
