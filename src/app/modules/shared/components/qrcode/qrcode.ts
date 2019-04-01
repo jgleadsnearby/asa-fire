@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
-import qrcanvas from 'qrcanvas';
+import {qrcanvas} from 'qrcanvas';
 
 @Component({
   selector: 'ion-qrcode',
