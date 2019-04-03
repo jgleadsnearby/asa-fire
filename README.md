@@ -8,11 +8,11 @@ Welcome page
 <img src="https://i.imgur.com/Fbe1R3r.png" width="200" alt="Ionic 4 and Angular 5 ASA Fire Protection QR Scanner and Generator App">
 </td>
 <td width="25%">
-Ticket Page
-<img src="https://i.imgur.com/f2fnwfF.png" width="200" alt="Ionic 4 and Angular 5 ASA Fire Protection QR Scanner and Generator App">
+Scanner Page
+<img src="https://i.imgur.com/1dPYl5m.png" width="200" alt="Ionic 4 and Angular 5 ASA Fire Protection QR Scanner and Generator App">
 </td>
 <td width="25%">
-Account page
+Generator page
 <img src="https://i.imgur.com/IyXZL4O.png" width="200" alt="Ionic 4 and Angular 5 ASA Fire Protection QR Scanner and Generator App">
 </td>
 <td width="25%">
