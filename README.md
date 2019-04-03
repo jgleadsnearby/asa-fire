@@ -1,4 +1,4 @@
-# qr-scanner
+# ASA Fire Protection App
 ASA Fire Protection Ionic Project. 
 
 
