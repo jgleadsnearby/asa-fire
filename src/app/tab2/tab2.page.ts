@@ -7,6 +7,7 @@ import { File } from '@ionic-native/file/ngx';
 import QRCode from 'qrcode';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import {Capacitor} from '@capacitor/core';
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -120,6 +121,12 @@ export class Tab2Page {
         this.pdfObj = pdfMake.createPdf(this.docDefinition);
         // console.log('create pdf end');
         this.downloadPdf();
+    }
+
+    async print() {
+        const { CPCLPlugin } = Capacitor.Plugins;
+        const data = await CPCLPlugin.echo({'value' : 'some test data from web'});
+        console.log('data from native >>', data);
     }
 
     downloadPdf() {
