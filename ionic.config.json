@@ -1,7 +1,8 @@
 {
   "name": "Ionic4BarcodeScanner",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
