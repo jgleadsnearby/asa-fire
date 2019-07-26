@@ -124,10 +124,44 @@ export class Tab2Page {
     }
 
     async print() {
-        const { CPCLPlugin } = Capacitor.Plugins;
-        const data = await CPCLPlugin.echo({'value' : 'some test data from web'});
-        console.log('data from native >>', data);
+        const alert = await this.alertController.create({
+            header: 'Print QR Code',
+            inputs: [
+                {
+                    name: 'host',
+                    placeholder: 'Host IP',
+                    type: 'text'
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: () => {
+                        console.log('Confirm Cancel');
+                    }
+                }, {
+                    text: 'Connect & Print',
+                    handler: (result) => {
+                        this.processPrint(result);
+                    }
+                }
+            ],
+            backdropDismiss: false,
+        });
+        await alert.present();
     }
+
+    processPrint = async (result) => {
+        const {ASAPrintPlugin} = Capacitor.Plugins;
+        try {
+            const data = await ASAPrintPlugin.print({'host': result.host, image: this.generated});
+            console.log('plugin response >>', data);
+        } catch (e) {
+            console.log(e.toString());
+        }
+    };
 
     downloadPdf() {
         if (this.plt.is('cordova')) {
