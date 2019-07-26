@@ -3,12 +3,12 @@ import {Platform, AlertController, ToastController} from '@ionic/angular';
 import {BarcodeScanner, BarcodeScannerOptions} from '@ionic-native/barcode-scanner/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { File } from '@ionic-native/file/ngx';
 import QRCode from 'qrcode';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import {Capacitor} from '@capacitor/core';
+import {Capacitor, FilesystemDirectory, FilesystemEncoding, Plugins} from '@capacitor/core';
 
+const { Filesystem } = Plugins;
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -35,7 +35,6 @@ export class Tab2Page {
     constructor(
         private socialSharing: SocialSharing,
         private barcodeScanner: BarcodeScanner,
-        private file: File,
         private fileOpener: FileOpener,
         private plt: Platform,
         public alertController: AlertController,
@@ -167,16 +166,37 @@ export class Tab2Page {
         if (this.plt.is('cordova')) {
             this.pdfObj.getBuffer((buffer) => {
                 const blob = new Blob([buffer], { type: 'application/pdf' });
-
-                // Save the PDF to the data Directory of our App
-                this.file.writeFile(this.file.dataDirectory, 'myqrcode.pdf', blob, { replace: true }).then(fileEntry => {
-                    // Open the PDf with the correct OS tools
-                    this.fileOpener.open(this.file.dataDirectory + 'myqrcode.pdf', 'application/pdf');
-                });
+                this.fileWrite(blob);
             });
         } else {
             // On a browser simply use download!
             this.pdfObj.download();
+        }
+    }
+
+    fileWrite(blob) {
+        try {
+            const reader = new FileReader;
+            reader.onload = () => {
+                const result = reader.result as string;
+                console.log('file result >>', result);
+                console.log('file dir', FilesystemDirectory.Documents);
+                Filesystem.writeFile({
+                    data: result,
+                    directory: FilesystemDirectory.Documents,
+                    path: 'asa-qr-code.pdf',
+                }).then((data) => {
+                    console.log('file written successfully!', data);
+                    // TODO: make file path dynamic
+                    this.fileOpener.open('/storage/emulated/0/Documents/' + 'asa-qr-code.pdf', 'application/pdf');
+                }).catch((e) => {
+                    console.log('file error >>', e);
+                });
+            };
+
+            reader.readAsDataURL(blob);
+        } catch (e) {
+            console.error('Unable to write file', e);
         }
     }
 

@@ -14,7 +14,6 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
-import { File } from '@ionic-native/file/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 
@@ -31,7 +30,6 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
       InAppBrowser,
       SocialSharing,
       FileOpener,
-      File,
       CallNumber,
       OneSignal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
