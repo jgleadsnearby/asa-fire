@@ -6,7 +6,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import QRCode from 'qrcode';
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import {Capacitor, FilesystemDirectory, FilesystemEncoding, Plugins} from '@capacitor/core';
+import {Capacitor, FilesystemDirectory, Plugins} from '@capacitor/core';
 
 const { Filesystem } = Plugins;
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
@@ -185,10 +185,14 @@ export class Tab2Page {
                     data: result,
                     directory: FilesystemDirectory.Documents,
                     path: 'asa-qr-code.pdf',
-                }).then((data) => {
+                }).then(async (data) => {
                     console.log('file written successfully!', data);
-                    // TODO: make file path dynamic
-                    this.fileOpener.open('/storage/emulated/0/Documents/' + 'asa-qr-code.pdf', 'application/pdf');
+                    const uriResult = await Filesystem.getUri({
+                        directory: FilesystemDirectory.Documents,
+                        path: 'asa-qr-code.pdf',
+                    });
+                    console.log('uri data imp >>', uriResult);
+                    this.fileOpener.open(uriResult.uri, 'application/pdf');
                 }).catch((e) => {
                     console.log('file error >>', e);
                 });
