@@ -155,7 +155,7 @@ export class Tab2Page {
     processPrint = async (result) => {
         const {ASAPrintPlugin} = Capacitor.Plugins;
         try {
-            const data = await ASAPrintPlugin.print({'host': result.host, image: this.generated});
+            const data = await ASAPrintPlugin.print({'host': null, image: this.generated});
             console.log('plugin response >>', data);
         } catch (e) {
             console.log(e.toString());
