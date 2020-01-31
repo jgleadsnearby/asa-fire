@@ -1,0 +1,7 @@
+{
+  "appId": "com.leadsnearby.asa",
+  "appName": "ASA Fire",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
