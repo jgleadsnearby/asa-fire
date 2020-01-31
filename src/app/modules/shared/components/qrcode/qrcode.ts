@@ -71,7 +71,7 @@ export class QrCodeComponent implements AfterViewInit, OnChanges {
         {row: -3, rows: 2, col: 1, cols: 2, style: colorIn},
         {row: 1, rows: 2, col: -3, cols: 2, style: colorIn},
       ],
-      background: this.background,
+      background: 'white',
       effect: {
         key: 'none',
         value: 1,
